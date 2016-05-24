@@ -15,8 +15,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void writeSettings();
+    void loadSettings();
+
 private:
     Ui::MainWindow *ui;
+    QSettings *settings;
 };
 
 #endif // MAINWINDOW_H
