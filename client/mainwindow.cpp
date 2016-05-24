@@ -5,7 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui->setu
+    ui->setupUi(this);
 }
 
 MainWindow::~MainWindow()
@@ -13,12 +13,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-MainWindow::writeSettings()
+void MainWindow::writeSettings()
 {
-    QSettings settings("client.conf",QSettings::IniFormat);
+   // QSettings settings("client.conf",QSettings::IniFormat);
 }
 
-MainWindow::loadSettings()
+void MainWindow::loadSettings()
 {
 
 }

@@ -20,7 +20,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QSettings *settings;
+    //QSettings *settings;
 };
 
 #endif // MAINWINDOW_H
