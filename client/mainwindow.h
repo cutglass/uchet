@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
+#include <QSqlDatabase>
 
 namespace Ui {
 class MainWindow;
@@ -17,10 +19,17 @@ public:
 
     void writeSettings();
     void loadSettings();
+    bool createConnection();
 
 private:
     Ui::MainWindow *ui;
-    //QSettings *settings;
+    QSettings *settings;
+    QString db_name;
+    QString db_host;
+    QString db_user;
+    QString db_pass;
+    QSqlDatabase db;
+
 };
 
 #endif // MAINWINDOW_H
