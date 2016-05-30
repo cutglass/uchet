@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QMessageBox>
+#include <QSqlError>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -8,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     settings=new QSettings("client.conf",QSettings::IniFormat);
     loadSettings();
+    createConnection();
 }
 
 MainWindow::~MainWindow()
@@ -42,7 +46,9 @@ bool MainWindow::createConnection()
     db.setUserName(db_user);
     db.setPassword(db_pass);
     if(!db.open()){
-       // db.lastError().showMessage();
+        QSqlError sqlerror;
+                sqlerror=db.lastError();
+        QMessageBox::critical(this,"ALARM!",sqlerror.text());
         return false;
     };
     return true;
